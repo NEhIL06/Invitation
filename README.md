@@ -1,6 +1,6 @@
-# Siddharth & Shrinkhla’s wedding invitation
+# Siddharth & Shrinkhala’s wedding invitation
 
-A mobile-first Next.js invitation inspired by the reference site’s ceremonial flow, with an original visual design and artwork. GSAP and ScrollTrigger animate the hero artwork, invitation sections, and ceremony timeline as guests scroll. Motion is disabled when the visitor requests reduced motion.
+A mobile invitation for the Chandrakar wedding on 23–24 January 2027. The Design2 branch follows the Shubh Aarambh reference with a filmed opening, a parchment invitation, family portraits, a pull-to-reveal date, a photo gallery, and a programme guests can leaf through.
 
 ## Run locally
 
@@ -11,14 +11,8 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Add the wedding details
+## Wedding details
 
-Edit [`lib/invitation.ts`](lib/invitation.ts). Dates use `YYYY-MM-DD`; leave any unknown field as `null` and the site will show “to be announced.” Add the main venue, address and Google Maps URL there too. The countdown and map link appear automatically when those details are set.
+The [programme and venue details](lib/invitation.ts) supply the event book, calendar links, countdown, and directions. Event times are in India Standard Time. The [invitation page](app/page.tsx) contains the family's wording from the printed cards.
 
-Guests can be greeted by opening the invitation with `?guest=Guest-Name` appended to the URL. The share button copies the general invitation link without the guest name.
-
-The opening envelope appears once per browser session. Reload after clearing session storage to see it again.
-
-The illustration and font files are stored in `public/`, so the invitation renders without third-party asset requests.
-
-Preview images are in [`previews/`](previews/), including the first phone screen, full mobile page, and desktop page.
+The page serves optimized photographs, illustrations, the opening film, and optional instrumental music from `public/aarambh/`. The venue section embeds Google Maps.

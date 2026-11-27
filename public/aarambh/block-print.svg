@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="220" viewBox="0 0 240 220" fill="none">
+  <defs>
+    <g id="sprig" stroke="#ab824d" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 35Q6 18 0 1M3 23Q-8 25-13 13Q-3 13 3 23ZM3 15Q9 8 15 8Q13 16 3 19M1 8Q-6 3-8-4Q-1-2 1 8Z"/>
+      <path d="M0 2Q-13-4-12-14Q-6-12-3-7Q-6-17 0-23Q6-17 3-7Q6-12 12-14Q13-5 0 2Z"/>
+      <path d="M0-16Q-2-10 0-5M-9-10L-5-5M8-10L5-5"/>
+      <circle cy="39" r="1.2" fill="#a77a48"/>
+    </g>
+    <g id="bud" fill="#ad8556"><path d="M0-4Q5 0 0 5Q-5 0 0-4Z"/><circle cy="9" r="1"/></g>
+  </defs>
+  <g opacity=".21">
+    <use href="#sprig" transform="translate(57 45) rotate(-13) scale(.85)"/>
+    <use href="#sprig" transform="translate(180 149) rotate(12) scale(.85)"/>
+  </g>
+  <g opacity=".18"><use href="#bud" transform="translate(177 45) scale(.7)"/><use href="#bud" transform="translate(56 154) scale(.7)"/></g>
+</svg>
