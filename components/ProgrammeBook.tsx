@@ -3,13 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, MapPin, CalendarPlus } from "lucide-react";
 import type { PageFlip } from "page-flip";
-import { calendarLink, directions, events, venue } from "@/lib/invitation";
+import { calendarLink, coupleNames, directions, events, venue } from "@/lib/invitation";
 
 const lastSpread = events.length + 1;
 
 function Cover({ back = false }: { back?: boolean }) {
   return <button className={"book-cover" + (back ? " back-cover" : "")} data-action={back ? "restart" : "open"}>
-    {back ? <><span>❦</span><strong>With love</strong><span>Siddharth & Shrinkhala</span><b>Read again</b></> : <>
+    {back ? <><span>❦</span><strong>With love</strong><span>{coupleNames}</span><b>Read again</b></> : <>
       <img src="/aarambh/gold-ganesh.webp" alt="" />
       <strong>Wedding<br />Functions</strong><span className="cover-rule">❦</span>
       <span className="contents">{events.map(event => <span key={event.name}>{event.name}</span>)}</span>

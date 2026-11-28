@@ -3,7 +3,7 @@ import { InvitationExperience } from "@/components/InvitationExperience";
 import { DateReveal } from "@/components/DateReveal";
 import { PhotoMemories } from "@/components/PhotoMemories";
 import { ProgrammeBook } from "@/components/ProgrammeBook";
-import { directions, mapEmbed, people, venue, weddingDate } from "@/lib/invitation";
+import { brideName, coupleNames, directions, groomName, mapEmbed, people, venue, weddingDate } from "@/lib/invitation";
 
 function Garland() {
   return <div className="garland" aria-hidden="true">
@@ -25,7 +25,7 @@ export default function Home() {
         </div>
         <div className="hero-type"><img className="ganesh" src="/aarambh/ganesh.webp" alt="" />
           <p className="smallcaps">The wedding invitation of</p>
-          <h1 id="couple-names">Siddharth <em>&</em> Shrinkhala</h1>
+          <h1 id="couple-names">{brideName} <em>&</em> {groomName}</h1>
           <p className="hero-date">24 January 2027 · Durg</p>
         </div>
         <a className="scroll-cue" href="#invitation">Scroll <ChevronDown size={17} /></a>
@@ -37,10 +37,9 @@ export default function Home() {
             <img className="ganesh" src="/aarambh/ganesh.webp" alt="" />
             <p className="shloka" lang="hi">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br />निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥</p>
             <div className="rule" />
-            <h3>Dr. Sudama Chandrakar<br />& Bharti Chandrakar</h3>
-            <p>Request the honour of your presence and blessings on the auspicious occasion of the wedding ceremony of their son</p>
-            <h2>Dr. Siddharth <em>with</em> Dr. Shrinkhala</h2>
-            <p>Daughter of</p><h3>Dr. Kamlesh Kumar Chandrakar<br />& Dr. Manisha Chandrakar</h3>
+            <h3>Chandrakar family</h3>
+            <p>Requests the honour of your presence and blessings on the auspicious occasion of wedding of</p>
+            <h2>Dr. {brideName} <em>with</em> Dr. {groomName}</h2>
             <p className="letter-date">{weddingDate}</p>
           </article>
           <div className="moving-roller" aria-hidden="true" />
@@ -60,7 +59,7 @@ export default function Home() {
       <section className="venue velvet" aria-labelledby="venue-title">
         <header data-rise><p className="script">Join us in Durg</p><h2 id="venue-title">The Wedding Venue</h2></header>
         <article className="venue-card">
-          <div className="venue-info"><MapPin size={22} /><h3>{venue.name}</h3><address>{venue.road}<br />{venue.locality}</address>
+          <div className="venue-info"><MapPin size={22} /><h3>{venue.name}</h3><address>{venue.plusCode}, {venue.road}<br />{venue.locality}</address>
             <a className="directions" href={directions} target="_blank" rel="noreferrer"><Navigation size={15} /> Get directions</a>
           </div>
           <iframe loading="lazy" title="Map of Marry Gold Resort, Anjora, Durg" src={mapEmbed} referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
@@ -68,11 +67,11 @@ export default function Home() {
       </section>
       <footer className="closing">
         <p className="script" data-rise>With love and warm regards</p>
-        <div className="monogram" data-rise>S & S</div><h2>Siddharth & Shrinkhala</h2>
+        <div className="monogram" data-rise>S & S</div><h2>{coupleNames}</h2>
         <img className="divider" src="/aarambh/divider.webp" alt="" loading="lazy" />
         <p>We look forward to welcoming you.</p>
-        <details><summary>With the blessings of our families</summary><p>Dr. Sudama & Bharti Chandrakar<br />Smt. Keshrimadhav Chandrakar<br />Mr. Panna & Sudha Chandrakar<br />Dr. Sulabh & Dr. Nandini Chandrakar<br />Navya, Nayra, Nairv</p>
-          <p>Tulina & Rakesh · Sushmaprashant<br />Dr. Shraddha & Dr. Shrey · Archana & Kshitij<br />Moulik, Snigdha, Yatharth, Kiara, Avyaan</p></details>
+        {/* <details><summary>With the blessings of our families</summary><p>Dr. Sudama & Bharti Chandrakar<br />Smt. Keshrimadhav Chandrakar<br />Mr. Panna & Sudha Chandrakar<br />Dr. Sulabh & Dr. Nandini Chandrakar<br />Navya, Nayra, Nairv</p>
+        <p>Tulina & Rakesh · Sushmaprashant<br />Dr. Shraddha & Dr. Shrey · Archana & Kshitij<br />Moulik, Snigdha, Yatharth, Kiara, Avyaan</p></details> */}
         <p className="closing-date">{weddingDate}<br />{venue.name}, Durg</p>
       </footer>
     </main>

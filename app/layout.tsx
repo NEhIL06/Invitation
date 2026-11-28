@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { brideName, coupleNames, groomName } from "@/lib/invitation";
 import "./experience.css";
 
 export const metadata: Metadata = {
-  title: "Siddharth & Shrinkhala | Wedding Invitation",
+  title: `${coupleNames} | Wedding Invitation`,
   description:
-    "With love and blessings, Siddharth Chandrakar and Shrinkhala Chandrakar invite you to celebrate their wedding.",
+    `With love and blessings, ${brideName} Chandrakar and ${groomName} Chandrakar invite you to celebrate their wedding.`,
   openGraph: {
-    title: "Siddharth & Shrinkhala | Wedding Invitation",
+    title: `${coupleNames} | Wedding Invitation`,
     description: "Together with our families, we invite you to celebrate with us.",
   },
 };

@@ -59,8 +59,7 @@ header > p:last-child { margin: .75rem auto 0; }
 .cover-film { width: 100%; height: 100%; object-fit: contain; display: block; }
 .unseal { position: absolute; inset: 0; width: 100%; border: 0; background: transparent; }
 .unseal:focus-visible { outline-offset: -8px; }
-.skip, .music, .controls button, .lightbox-close { display: grid; place-items: center; border: 1px solid #a37c4b50; background: #fff9efed; color: var(--wine); }
-.skip { position: absolute; right: 14px; bottom: max(16px, env(safe-area-inset-bottom)); min-height: 44px; border-radius: 30px; padding: 0 18px; font: .8rem var(--sans); }
+.music, .controls button, .lightbox-close { display: grid; place-items: center; border: 1px solid #a37c4b50; background: #fff9efed; color: var(--wine); }
 .music { position: fixed; right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); z-index: 8; width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 3px 14px #58293029; }
 .hero { position: relative; overflow: hidden; isolation: isolate; height: 100svh; text-align: center; }
 .hero-scenery, .hero-scenery img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -1; }

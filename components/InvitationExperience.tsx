@@ -5,6 +5,7 @@ import { Music2, Pause } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import { brideName, groomName } from "@/lib/invitation";
 
 export function InvitationExperience({ children }: { children: React.ReactNode }) {
   const [cover, setCover] = useState<"sealed" | "playing" | "open">("sealed");
@@ -68,7 +69,12 @@ export function InvitationExperience({ children }: { children: React.ReactNode }
     return () => window.clearTimeout(limit);
   }, [cover]);
 
+  function playMusic() {
+    void audio.current?.play().catch(() => setMusic(false));
+  }
+
   function unseal() {
+    playMusic();
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setCover("open");
       return;
@@ -77,24 +83,21 @@ export function InvitationExperience({ children }: { children: React.ReactNode }
     video.current?.play().catch(() => setCover("open"));
   }
 
-  async function toggleMusic() {
-    const player = audio.current;
-    if (!player) return;
-    if (music) player.pause();
-    else await player.play().catch(() => setMusic(false));
+  function toggleMusic() {
+    if (music) audio.current?.pause();
+    else playMusic();
   }
 
   return <>
     {cover !== "open" && <div className="cover" role="dialog" aria-modal="true" aria-label="Wedding invitation">
       <video ref={video} className="cover-film" poster="/aarambh/cover.webp" muted playsInline preload="none"
         src="/aarambh/opening.mp4" onEnded={() => setCover("open")} onError={() => { if (cover === "playing") setCover("open"); }} />
-      {cover === "sealed" ? <button className="unseal" onClick={unseal} aria-label="Open Siddharth and Shrinkhala’s wedding invitation" autoFocus />
-        : <button className="skip" onClick={() => setCover("open")}>Skip opening</button>}
+      {cover === "sealed" && <button className="unseal" onClick={unseal} aria-label={`Open ${brideName} and ${groomName}’s wedding invitation`} autoFocus />}
     </div>}
     <div ref={page} tabIndex={-1} inert={cover !== "open"} className="invitation">
       {children}
-      <audio ref={audio} src="/aarambh/instrumental.mp3" loop preload="none" onPlay={() => setMusic(true)} onPause={() => setMusic(false)} />
-      <button type="button" className="music" onClick={toggleMusic} aria-pressed={music} aria-label={music ? "Pause music" : "Play music"}>
+      <audio ref={audio} src="/aarambh/ishq-hai.mp3" loop preload="metadata" onPlay={() => setMusic(true)} onPause={() => setMusic(false)} />
+      <button type="button" className="music" onClick={toggleMusic} aria-pressed={music} aria-label={music ? "Pause Ishq Hai" : "Play Ishq Hai"}>
         {music ? <Pause size={18} /> : <Music2 size={18} />}
       </button>
     </div>
