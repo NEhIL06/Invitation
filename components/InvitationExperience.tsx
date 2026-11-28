@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Music2, Pause } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,6 +13,14 @@ export function InvitationExperience({ children }: { children: React.ReactNode }
   const video = useRef<HTMLVideoElement>(null);
   const audio = useRef<HTMLAudioElement>(null);
   const page = useRef<HTMLDivElement>(null);
+
+  const playMusic = useCallback(() => {
+    void audio.current?.play().catch(() => setMusic(false));
+  }, []);
+
+  useEffect(() => {
+    if (cover === "open") playMusic();
+  }, [cover, playMusic]);
 
   useEffect(() => {
     if (cover === "open") return;
@@ -69,12 +77,9 @@ export function InvitationExperience({ children }: { children: React.ReactNode }
     return () => window.clearTimeout(limit);
   }, [cover]);
 
-  function playMusic() {
-    void audio.current?.play().catch(() => setMusic(false));
-  }
-
   function unseal() {
-    playMusic();
+    // Prepare the player during the tap so it can start after the cover opens.
+    audio.current?.load();
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setCover("open");
       return;
@@ -96,7 +101,7 @@ export function InvitationExperience({ children }: { children: React.ReactNode }
     </div>}
     <div ref={page} tabIndex={-1} inert={cover !== "open"} className="invitation">
       {children}
-      <audio ref={audio} src="/aarambh/ishq-hai.mp3" loop preload="metadata" onPlay={() => setMusic(true)} onPause={() => setMusic(false)} />
+      <audio ref={audio} src="/aarambh/ishq-hai.mp3" preload="metadata" onPlay={() => setMusic(true)} onPause={() => setMusic(false)} onEnded={() => setMusic(false)} />
       <button type="button" className="music" onClick={toggleMusic} aria-pressed={music} aria-label={music ? "Pause Ishq Hai" : "Play Ishq Hai"}>
         {music ? <Pause size={18} /> : <Music2 size={18} />}
       </button>
